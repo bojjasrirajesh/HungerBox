@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table
+@Table(name="users")
 public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,6 +16,18 @@ public class Users {
 	private String mobNum;
 	private String eMail;
 	private String roleName;
+	
+	
+	/*@OneToMany(mappedBy="users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Vendors> vendor;*/
+
+	/*public List<Vendors> getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(List<Vendors> vendor) {
+		this.vendor = vendor;
+	}*/
 
 	public Long getUserId() {
 		return userId;

@@ -17,7 +17,13 @@ public class Items {
 	private String itemType;
 	private Double price;
 	private Integer quantity;
-	private Long vendorId;
+	private Long userId;
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	public Long getItemId() {
 		return itemId;
 	}
@@ -48,28 +54,23 @@ public class Items {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public Long getVendorId() {
-		return vendorId;
-	}
-	public void setVendorId(Long vendorId) {
-		this.vendorId = vendorId;
-	}
 	@Override
 	public String toString() {
 		return "Items [itemId=" + itemId + ", itemName=" + itemName + ", itemType=" + itemType + ", price=" + price
-				+ ", quantity=" + quantity + ", vendorId=" + vendorId + "]";
+				+ ", quantity=" + quantity + ", vendorId="  + ", userId=" + userId + "]";
 	}
-	public Items(Long itemId, String itemName, String itemType, Double price, Integer quantity, Long vendorId) {
+	public Items() {
+		super();
+	}
+	public Items(Long itemId, String itemName, String itemType, Double price, Integer quantity, Long vendorId,
+			Long userId) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.itemType = itemType;
 		this.price = price;
 		this.quantity = quantity;
-		this.vendorId = vendorId;
-	}
-	public Items() {
-		super();
+		this.userId = userId;
 	}
 	
 	
