@@ -15,7 +15,7 @@ public class SwaggerConfig {
 	 public Docket api() { 
 	        return new Docket(DocumentationType.SWAGGER_2)  
 	          .select()                                  
-	          .apis(RequestHandlerSelectors.basePackage("com.hcl.ing.onlineflightbooking.controller"))              
+	          .apis(RequestHandlerSelectors.basePackage("com.hcl.ing.hungerbox.Controller"))              
 	          .paths(PathSelectors.any())                          
 	          .build();                                           
 	    }

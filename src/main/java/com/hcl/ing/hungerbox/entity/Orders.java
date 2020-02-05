@@ -1,9 +1,13 @@
 package com.hcl.ing.hungerbox.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,7 @@ public class Orders {
 	private String orderDate;
 	private String status;
 	private Long userId;
+
 	public Long getOrderId() {
 		return orderId;
 	}
@@ -47,6 +52,9 @@ public class Orders {
 		this.status = status;
 		this.userId = userId;
 	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Orders [orderId=" + orderId + ", orderDate=" + orderDate + ", status=" + status + ", userId=" + userId
