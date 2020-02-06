@@ -1,5 +1,7 @@
 package com.hcl.ing.hungerbox.Controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,7 @@ public class LoginController {
 		 * @return LoginResponseDto 
 		 */
 	 @PostMapping(value = "/login") 
-	 public LoginResponseDto usersLogin(@RequestBody LoginDto loginDto) { 
+	 public LoginResponseDto usersLogin(@Valid @RequestBody LoginDto loginDto) { 
 		 LOGGER.info(LibraryUtil.LOGIN_METHOD);
 		 return userService.usersLogin(loginDto);
 	 }

@@ -2,10 +2,17 @@ package com.hcl.ing.hungerbox.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+
+import com.hcl.ing.hungerbox.util.LibraryUtil;
+
 public class LoginDto implements Serializable{
 	private static final long serialVersionUID = 1L;
+	@NotBlank(message=LibraryUtil.NOT_BLANK)
 	private String uName;
+	@NotBlank(message=LibraryUtil.NOT_BLANK)
 	private String password;
+	@NotBlank(message=LibraryUtil.NOT_BLANK)
 	private String roleName;
 	
 	public String getuName() {

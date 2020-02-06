@@ -42,5 +42,7 @@ public static final String BOOK_ADD_SUCCESS = "Book added successfully";
 
 	public static final String GET_USER_ALl_VENDOR_METHOD = "getAllVendors Method in UserController started";;
 
-	public static final String ADD_ISER_ITEM_METHOD = "getItems Method in UserController started";;
+	public static final String ADD_ISER_ITEM_METHOD = "getItems Method in UserController started";
+
+	public static final String NOT_BLANK = "Please enter the manadatory values";
 }
