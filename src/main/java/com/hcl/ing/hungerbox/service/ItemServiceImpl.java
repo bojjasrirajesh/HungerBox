@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.ing.hungerbox.dto.ItemRequestDto;
 import com.hcl.ing.hungerbox.dto.ItemResponseDto;
+import com.hcl.ing.hungerbox.dto.VendorRequestDto;
 import com.hcl.ing.hungerbox.entity.Items;
+import com.hcl.ing.hungerbox.entity.Vendors;
 import com.hcl.ing.hungerbox.exception.AddItemException;
 import com.hcl.ing.hungerbox.exception.DeleteItemException;
 import com.hcl.ing.hungerbox.exception.NoItemsArePresentException;
@@ -46,7 +48,13 @@ public class ItemServiceImpl implements ItemsService{
 		}
 		Items items=new Items();
 		BeanUtils.copyProperties(itemRequestDto, items);
+		VendorRequestDto vendorRequestDto=new VendorRequestDto();
+		vendorRequestDto.setUserId(itemRequestDto.getUserId());
+		Vendors vendors=new Vendors(); 
 		
+		BeanUtils.copyProperties(vendorRequestDto, vendors);
+		Vendors vendorRes = vendorRepository.save(vendors);
+		items.setVendorId(vendorRes.getVendorId());
 		itemRepository.save(items);
 		List<Items> itemsSave = itemRepository.findAll();
 		itemResponseDto.setMessage("success");
