@@ -62,6 +62,7 @@ public class VendorServiceImpl implements VendorService{
 				vendorRepository.deleteById(vendorId);
 				vendorResponseDto.setMessage("success");
 				vendorResponseDto.setStatusCode(HttpStatus.OK.value());
+				vendorResponseDto.setVendors(vendorRepository.findAll());
 			}
 		});
 		return vendorResponseDto;

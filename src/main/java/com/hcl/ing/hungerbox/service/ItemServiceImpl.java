@@ -70,7 +70,7 @@ public class ItemServiceImpl implements ItemsService{
 			throw new DeleteItemException("please provide the valid item id");
 		}
 		listOfItems.stream().forEach(listOfItem -> {
-			if((listOfItem.getItemId().toString()).equals(itemId)) {
+			if((listOfItem.getItemId()==itemId)) {
 				itemRepository.deleteById(itemId);
 				itemRepository.findAll();
 				itemResponseDto.setMessage("success");
