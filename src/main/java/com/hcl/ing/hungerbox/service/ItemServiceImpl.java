@@ -13,6 +13,7 @@ import com.hcl.ing.hungerbox.dto.ItemResponseDto;
 import com.hcl.ing.hungerbox.entity.Items;
 import com.hcl.ing.hungerbox.exception.AddItemException;
 import com.hcl.ing.hungerbox.exception.DeleteItemException;
+import com.hcl.ing.hungerbox.exception.NoItemsArePresentException;
 import com.hcl.ing.hungerbox.repository.ItemRepository;
 import com.hcl.ing.hungerbox.repository.VendorRepository;
 
@@ -28,6 +29,9 @@ public class ItemServiceImpl implements ItemsService{
 	@Override
 	public ItemResponseDto getAllItems() {
 		List<Items> items = itemRepository.findAll();
+		if(items.isEmpty()) {
+			throw new NoItemsArePresentException("vendors are not available");
+		}
 		itemResponseDto.setMessage("success");
 		itemResponseDto.setStatusCode(HttpStatus.OK.value());
 		itemResponseDto.setItems(items);
@@ -44,25 +48,28 @@ public class ItemServiceImpl implements ItemsService{
 		BeanUtils.copyProperties(itemRequestDto, items);
 		
 		itemRepository.save(items);
+		List<Items> itemsSave = itemRepository.findAll();
 		itemResponseDto.setMessage("success");
-		itemResponseDto.setStatusCode(HttpStatus.CREATED.value());
+		itemResponseDto.setStatusCode(HttpStatus.OK.value());
+		itemResponseDto.setItems(itemsSave);
 		return itemResponseDto;
 	}
 
 	@Override
 	public ItemResponseDto deleteItems(Long itemId) {
-		List<Items> items = itemRepository.findAll();
-		for (Items item : items) {
-			if(!(item.getItemId().equals(itemId))) {
-				throw new DeleteItemException("please provide the valide vendor id");
-			}else {
+		List<Items> listOfItems = itemRepository.findAll();
+		if(Objects.isNull(itemId)){
+			throw new DeleteItemException("please provide the valid item id");
+		}
+		listOfItems.stream().forEach(listOfItem -> {
+			if((listOfItem.getItemId().toString()).equals(itemId)) {
 				itemRepository.deleteById(itemId);
 				itemRepository.findAll();
 				itemResponseDto.setMessage("success");
 				itemResponseDto.setStatusCode(HttpStatus.OK.value());
 				itemResponseDto.setItems(itemRepository.findAll());
 			}
-		}
+		});
 		return itemResponseDto;
 	}
 

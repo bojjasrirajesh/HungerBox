@@ -5,7 +5,7 @@ import com.hcl.ing.hungerbox.dto.VendorResponseDto;
 
 public interface VendorService {
 	
-	VendorResponseDto getAllVendorsByUserId();
+	VendorResponseDto getAllVendors();
 	VendorResponseDto addVenders(VendorRequestDto vendorRequestDto);
 	VendorResponseDto deleteVendor(Long vendorId);
 

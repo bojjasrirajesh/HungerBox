@@ -14,6 +14,13 @@ public class ItemResponseDto implements Serializable{
 	private String message;
 	private Integer statusCode;
 	private List<Items> items;
+	private Items item;
+	public Items getItem() {
+		return item;
+	}
+	public void setItem(Items item) {
+		this.item = item;
+	}
 	public String getMessage() {
 		return message;
 	}

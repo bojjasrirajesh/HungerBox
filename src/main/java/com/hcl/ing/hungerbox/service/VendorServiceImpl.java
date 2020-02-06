@@ -25,7 +25,7 @@ public class VendorServiceImpl implements VendorService{
 	VendorResponseDto vendorResponseDto=new VendorResponseDto();
 	
 	@Override
-	public VendorResponseDto getAllVendorsByUserId() {
+	public VendorResponseDto getAllVendors() {
 		
 		List<Vendors> vendors = vendorRepository.findAll();
 		vendorResponseDto.setMessage("success");
@@ -44,26 +44,26 @@ public class VendorServiceImpl implements VendorService{
 		BeanUtils.copyProperties(vendorRequestDto, vendor);
 		
 		vendorRepository.save(vendor);
+		List<Vendors> findAll = vendorRepository.findAll();
 		vendorResponseDto.setMessage("success");
 		vendorResponseDto.setStatusCode(HttpStatus.CREATED.value());
+		vendorResponseDto.setVendors(findAll);
 		return vendorResponseDto;
 	}
 
 	@Override
 	public VendorResponseDto deleteVendor(Long vendorId) {
 		List<Vendors> vendors = vendorRepository.findAll();
-		for (Vendors vendors2 : vendors) {
-			if(!(vendors2.getVendorId()==vendorId)) {
-				throw new DeleteVendorException("please provide the valide vendor id");
-			}else {
+		if(Objects.isNull(vendorId)){
+			throw new DeleteVendorException("please provide the valid vendor id");
+		}
+		vendors.stream().forEach(vendor -> {
+			if((vendor.getVendorId().toString()).equals(vendorId.toString())) {
 				vendorRepository.deleteById(vendorId);
-				vendorRepository.findAll();
 				vendorResponseDto.setMessage("success");
 				vendorResponseDto.setStatusCode(HttpStatus.OK.value());
-				vendorResponseDto.setVendors(vendorRepository.findAll());
 			}
-		}
+		});
 		return vendorResponseDto;
-	}
-
+}
 }

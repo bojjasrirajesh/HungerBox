@@ -6,7 +6,7 @@ import com.hcl.ing.hungerbox.dto.ItemResponseDto;
 public interface ItemsService {
 	ItemResponseDto getAllItems();
 	ItemResponseDto getAllItemsById(Long vendorId);
-	ItemResponseDto addItem(ItemRequestDto vendorRequestDto);
+	ItemResponseDto addItem(ItemRequestDto itemRequestDto);
 	ItemResponseDto deleteItems(Long itemId);
 
 }

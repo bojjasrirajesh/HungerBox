@@ -21,7 +21,7 @@ import com.hcl.ing.hungerbox.util.LibraryUtil;
  * 
  * @author bojja.r
  * @version 1.0
- * @since 30-01-2020
+ * @since 06-02-2020
  */
 
 @RestController
@@ -33,19 +33,19 @@ public class VendorController {
 	 @Autowired 
 	 VendorService vendorService;
 	 /**
-		 * This method is used to validating the user by providing the input as LoginDto 
+		 * This method is used to get the list of vendors  
 		 * @param loginDto
 		 * @return responseDTO 
 		 */
 	 @GetMapping(value = "/vendors") 
 	 public VendorResponseDto getAllVendors() { 
 		 LOGGER.info(LibraryUtil.GET_VENDOR_METHOD);
-		 return vendorService.getAllVendorsByUserId();
+		 return vendorService.getAllVendors();
 	 }
 	 /**
-		 * This method is used to validating the user by providing the input as LoginDto 
-		 * @param loginDto
-		 * @return responseDTO 
+		 * This method is used to add vendor 
+		 * @param vendorRequestDto
+		 * @return VendorResponseDto 
 		 */
 	 @PostMapping(value = "/addVendor") 
 	 public VendorResponseDto addVendors(@RequestBody VendorRequestDto vendorRequestDto) { 
@@ -53,13 +53,14 @@ public class VendorController {
 		 return vendorService.addVenders(vendorRequestDto);
 	 }
 	 /**
-		 * This method is used to validating the user by providing the input as LoginDto 
-		 * @param loginDto
-		 * @return responseDTO 
+		 * This method is used to delete  the vendor by vednorId 
+		 * @param vendorId
+		 * @return VendorResponseDto 
 		 */
 	 @DeleteMapping(value ="/deleteVendor/{vendorId}") 
 	 public VendorResponseDto deleteVendor(@PathVariable Long vendorId) { 
 		 LOGGER.info(LibraryUtil.DELETE_VENDOR_METHOD);
 		 return vendorService.deleteVendor(vendorId);
 	 }
+	 
 }

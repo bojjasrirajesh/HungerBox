@@ -18,7 +18,7 @@ import com.hcl.ing.hungerbox.util.LibraryUtil;
  * 
  * @author bojja.r
  * @version 1.0
- * @since 30-01-2020
+ * @since 06-02-2020
  */
 
 @RestController
@@ -31,9 +31,9 @@ public class LoginController {
 	 @Autowired 
 	 LoginService userService;
 	 /**
-		 * This method is used to validating the user by providing the input as LoginDto 
+		 * This method is used to login for the admin/vendor/user 
 		 * @param loginDto
-		 * @return responseDTO 
+		 * @return LoginResponseDto 
 		 */
 	 @PostMapping(value = "/login") 
 	 public LoginResponseDto usersLogin(@RequestBody LoginDto loginDto) { 

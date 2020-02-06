@@ -13,6 +13,13 @@ public class ItemRequestDto implements Serializable{
 	private Double price;
 	private Integer quantity;
 	private Long userId;
+	private Long vendorId;
+	public Long getVendorId() {
+		return vendorId;
+	}
+	public void setVendorId(Long vendorId) {
+		this.vendorId = vendorId;
+	}
 	public String getItemName() {
 		return itemName;
 	}

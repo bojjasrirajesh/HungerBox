@@ -12,4 +12,6 @@ import com.hcl.ing.hungerbox.entity.Vendors;
 public interface VendorRepository extends JpaRepository<Vendors, Long>{
 	
 	List<Items> findByVendorId(Long vendorId);
+	
+	List<Items> findByUserId(Long userId);
 }

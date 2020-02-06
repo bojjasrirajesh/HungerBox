@@ -8,6 +8,4 @@ import com.hcl.ing.hungerbox.entity.Users;
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long>{
 	
-	/*@Query("select * from Vendor v where v.userId=?1")
-	List<Vendors> findByUserId(Long userId);*/
 }

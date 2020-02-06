@@ -30,4 +30,14 @@ public class GlobalExceptionHandler {
 		
         return new ResponseEntity<>(errorResponse,HttpStatus.NOT_FOUND);
     }
+	@ExceptionHandler(DeleteItemException.class)
+    public ResponseEntity<ErrorResponse> deleteItemException(DeleteItemException ex) {
+        
+		ErrorResponse errorResponse=new ErrorResponse();
+		errorResponse.setMessgage(ex.getMessage());
+		errorResponse.setStatusCode(HttpStatus.NOT_FOUND.value());
+		errorResponse.setDateAndTime(LocalDateTime.now());
+		
+        return new ResponseEntity<>(errorResponse,HttpStatus.NOT_FOUND);
+    }
 }

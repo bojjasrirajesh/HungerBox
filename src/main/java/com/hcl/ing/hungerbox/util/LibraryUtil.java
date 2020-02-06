@@ -27,7 +27,7 @@ public static final String BOOK_ADD_SUCCESS = "Book added successfully";
 	
 	public static final String BOOK_LENDED = "Saved Successfully";
 	public static final String PROVIDE_ALL_REQUIRED_FIELDS ="please provide the all required details";
-	public static final String LOGIN_METHOD ="login Method in UserController started";
+	public static final String LOGIN_METHOD ="login Method in LoginController started";
 	public static final String REGISTER_METHOD ="register Method in UserController started";
 	public static final String ALL_LOCATIONS_METHOD ="getAllLocations Method in LocationsController started";
 	public static final String SUCCESS ="Success";
@@ -35,8 +35,12 @@ public static final String BOOK_ADD_SUCCESS = "Book added successfully";
 	public static final String ADD_VENDOR_METHOD ="addVendor Method in VendorController started";
 	public static final String DELETE_VENDOR_METHOD ="deleteVendor Method in VendorController started";
 
-	public static final String GET_ITEM_METHOD ="getAllVendorsById Method in VendorController started";
-	public static final String ADD_ITEM_METHOD ="addVendor Method in VendorController started";
-	public static final String DELETE_ITEM_METHOD ="deleteVendor Method in VendorController started";
+	public static final String GET_ITEM_METHOD ="getAllVendorsById Method in ItemController started";
+	public static final String ADD_ITEM_METHOD ="addItems Method ingetAllItems ItemController started";
+	public static final String DELETE_ITEM_METHOD ="deleteItem Method in ItemController started";
 	public static final String PROVIDE_VALID_USER = "please provide the  valid user";
+
+	public static final String GET_USER_ALl_VENDOR_METHOD = "getAllVendors Method in UserController started";;
+
+	public static final String ADD_ISER_ITEM_METHOD = "getItems Method in UserController started";;
 }

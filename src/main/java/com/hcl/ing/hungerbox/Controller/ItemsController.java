@@ -21,7 +21,7 @@ import com.hcl.ing.hungerbox.util.LibraryUtil;
  * 
  * @author bojja.r
  * @version 1.0
- * @since 30-01-2020
+ * @since 06-02-2020
  */
 
 @RestController
@@ -33,24 +33,19 @@ public class ItemsController {
 	 @Autowired 
 	 ItemsService itemsService;
 	 /**
-		 * This method is used to validating the user by providing the input as LoginDto 
-		 * @param loginDto
-		 * @return responseDTO 
+		 * This method is will give the list of all items  
+		 * 
+		 * @return ItemResponseDto 
 		 */
 	 @GetMapping("/allItem") 
 	 public ItemResponseDto getAllItems() { 
 		 LOGGER.info(LibraryUtil.GET_ITEM_METHOD);
 		 return itemsService.getAllItems();
 	 }
-	 @GetMapping("/allItem/{vendorId}") 
-	 public ItemResponseDto getAllItemsById(@PathVariable Long vendorId) { 
-		 LOGGER.info(LibraryUtil.GET_ITEM_METHOD);
-		 return itemsService.getAllItemsById(vendorId);
-	 }
 	 /**
-		 * This method is used to validating the user by providing the input as LoginDto 
-		 * @param loginDto
-		 * @return responseDTO 
+		 * This mehod is used to add the items by the vendor 
+		 * @param itemRequestDto
+		 * @return ItemResponseDto 
 		 */
 	 @PostMapping(value = "/addItem") 
 	 public ItemResponseDto addItems(@RequestBody ItemRequestDto itemRequestDto) { 
@@ -58,13 +53,13 @@ public class ItemsController {
 		 return itemsService.addItem(itemRequestDto);
 	 }
 	 /**
-		 * This method is used to validating the user by providing the input as LoginDto 
-		 * @param loginDto
-		 * @return responseDTO 
+		 * This method is used to deleting  the item by providing input as itemId 
+		 * @param itemId
+		 * @return ItemResponseDto 
 		 */
 	 @DeleteMapping(value ="/deleteItem/{itemId}") 
-	 public ItemResponseDto deleteItem(@PathVariable Long idemID) { 
+	 public ItemResponseDto deleteItem(@PathVariable Long itemId) { 
 		 LOGGER.info(LibraryUtil.DELETE_ITEM_METHOD);
-		 return itemsService.deleteItems(idemID);
+		 return itemsService.deleteItems(itemId);
 	 }
 }
